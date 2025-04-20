@@ -73,44 +73,22 @@ class PriceControllerTests {
 	}
 
 	@ParameterizedTest
-	@CsvSource({"2020-06-14T10:00:00,35455,1,35455,2020-06-14T00:00:00,2020-12-31T23:59:59,1,1,35.50", // Prueba 1:
-																										// realizar una
-																										// petición a
-																										// las 10:00 del
-																										// día 14 para
-																										// el producto
-																										// 35455 y la
-																										// marca 1
-																										// (ZARA).
-			"2020-06-14T16:00:00,35455,1,35455,2020-06-14T15:00:00,2020-06-14T18:30:00,1,2,25.45", // Prueba 2: realizar
-																									// una petición a
-																									// las 16:00 del día
-																									// 14 para el
-																									// producto 35455 y
-																									// la marca 1
-																									// (ZARA).
-			"2020-06-14T21:00:00,35455,1,35455,2020-06-14T00:00:00,2020-12-31T23:59:59,1,1,35.50", // Prueba 3: realizar
-																									// una petición a
-																									// las 21:00 del día
-																									// 14 para el
-																									// producto 35455 y
-																									// la marca 1
-																									// (ZARA).
-			"2020-06-15T10:00:00,35455,1,35455,2020-06-15T00:00:00,2020-06-15T11:00:00,1,3,30.50", // Prueba 4: realizar
-																									// una petición a
-																									// las 10:00 del día
-																									// 15 para el
-																									// producto 35455 y
-																									// la marca 1
-																									// (ZARA).
-			"2020-06-16T21:00:00,35455,1,35455,2020-06-15T16:00:00,2020-12-31T23:59:59,1,4,38.95" // Prueba 5: realizar
-																									// una petición a
-																									// las 21:00 del día
-																									// 16 para el
-																									// producto 35455 y
-																									// la marca 1
-																									// (ZARA).
-	})
+	@CsvSource({
+			// Prueba 1: realizar una petición a las 10:00 del día 14 para el producto 35455
+			// y la marca 1 (ZARA).
+			"2020-06-14T10:00:00,35455,1,35455,2020-06-14T00:00:00,2020-12-31T23:59:59,1,1,35.50",
+			// Prueba 2: realizar una petición a las 16:00 del día 14 para el producto 35455
+			// y la marca 1 (ZARA).
+			"2020-06-14T16:00:00,35455,1,35455,2020-06-14T15:00:00,2020-06-14T18:30:00,1,2,25.45",
+			// Prueba 3: realizar una petición a las 21:00 del día 14 para el producto 35455
+			// y la marca 1 (ZARA).
+			"2020-06-14T21:00:00,35455,1,35455,2020-06-14T00:00:00,2020-12-31T23:59:59,1,1,35.50",
+			// Prueba 4: realizar una petición a las 10:00 del día 15 para el producto 35455
+			// y la marca 1 (ZARA).
+			"2020-06-15T10:00:00,35455,1,35455,2020-06-15T00:00:00,2020-06-15T11:00:00,1,3,30.50",
+			// Prueba 5: realizar una petición a las 21:00 del día 16 para el producto 35455
+			// y la marca 1 (ZARA).
+			"2020-06-16T21:00:00,35455,1,35455,2020-06-15T16:00:00,2020-12-31T23:59:59,1,4,38.95"})
 	void testScenarios(@AggregateWith(PriceRequestAggregator.class) CreatePriceRequest createPriceRequest,
 			@AggregateWith(ApplicableRangeAggregator.class) ApplicableRangeDTO applicableRangeDTO) throws Exception {
 		final ObjectMapper mapper = new ObjectMapper();
